@@ -1,4 +1,0 @@
-:imagesdir: images
-
-= Docker for Azure
-
