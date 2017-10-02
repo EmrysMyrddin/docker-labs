@@ -1,6 +1,6 @@
 ## Docker for beginners
 
-You can also do this tutorial directly on (play with docker training site)[http://training.play-with-docker.com/dev-stage1/].
+You can also do this tutorial directly on [play with docker training site](http://training.play-with-docker.com/dev-stage1/).
 
 ### Stage 1 : The begining
 
