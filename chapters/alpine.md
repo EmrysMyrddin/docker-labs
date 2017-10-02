@@ -3,7 +3,7 @@ Now that you have everything setup, it's time to get our hands dirty. In this se
 
 To get started, let's run the following in our terminal:
 ```
-$ docker pull alpine
+$ docker image pull alpine
 ```
 
 > **Note:** Depending on how you've installed docker on your system, you might see a `permission denied` error after running the above command. Try the commands from the Getting Started tutorial to [verify your installation](https://docs.docker.com/engine/getstarted/step_one/#/step-3-verify-your-installation). If you're on Linux, you may need to prefix your `docker` commands with `sudo`. Alternatively you can [create a docker group](https://docs.docker.com/engine/installation/linux/ubuntulinux/#/create-a-docker-group) to get rid of this issue.
@@ -20,7 +20,7 @@ hello-world             latest              690ed74de00f        5 months ago    
 Great! Let's now run a Docker **container** based on this image. To do that you are going to use the `docker run` command.
 
 ```
-$ docker run alpine ls -l
+$ docker container run alpine ls -l
 total 48
 drwxr-xr-x    2 root     root          4096 Mar  2 16:20 bin
 drwxr-xr-x    5 root     root           360 Mar 18 09:47 dev
@@ -41,14 +41,14 @@ When you run `docker run alpine`, you provided a command (`ls -l`), so Docker st
 Let's try something more exciting.
 
 ```
-$ docker run alpine echo "hello from alpine"
+$ docker container run alpine echo "hello from alpine"
 hello from alpine
 ```
 OK, that's some actual output. In this case, the Docker client dutifully ran the `echo` command in our alpine container and then exited it. If you've noticed, all of that happened pretty quickly. Imagine booting up a virtual machine, running a command and then killing it. Now you know why they say containers are fast!
 
 Try another command.
 ```
-$ docker run alpine /bin/sh
+$ docker container run alpine sh
 ```
 
 Wait, nothing happened! Is that a bug? Well, no. These interactive shells will exit after running any scripted commands, unless they are run in an interactive terminal - so for this example to not exit, you need to `docker run -it alpine /bin/sh`.
@@ -66,7 +66,7 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 Since no containers are running, you see a blank line. Let's try a more useful variant: `docker ps -a`
 
 ```
-$ docker ps -a
+$ docker container ps -a
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                      PORTS               NAMES
 36171a5da744        alpine              "/bin/sh"                5 minutes ago       Exited (0) 2 minutes ago                        fervent_newton
 a6a9d46d0b2f        alpine             "echo 'hello from alp"    6 minutes ago       Exited (0) 6 minutes ago                        lonely_kilby
@@ -77,7 +77,7 @@ c317d0a9e3d2        hello-world         "/hello"                 34 seconds ago 
 What you see above is a list of all containers that you ran. Notice that the `STATUS` column shows that these containers exited a few minutes ago. You're probably wondering if there is a way to run more than just one command in a container. Let's try that now:
 
 ```
-$ docker run -it alpine /bin/sh
+$ docker container run -it alpine sh
 / # ls
 bin      dev      etc      home     lib      linuxrc  media    mnt      proc     root     run      sbin     sys      tmp      usr      var
 / # uname -a
